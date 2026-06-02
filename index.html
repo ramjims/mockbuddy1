@@ -29,7 +29,7 @@
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 20px;
     background-image:
@@ -37,7 +37,7 @@
       radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.06) 0%, transparent 50%);
   }
 
-  #app { width: 100%; max-width: 680px; }
+  #app { width: 100%; max-width: 700px; padding-top: 20px; padding-bottom: 60px; }
 
   .screen { display: none; }
   .screen.active { display: block; animation: fadeUp 0.4s ease; }
@@ -47,12 +47,12 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── CARD ── */
+  /* CARD */
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 40px 36px;
+    padding: 36px 32px;
     position: relative;
     overflow: hidden;
   }
@@ -65,46 +65,46 @@
     opacity: 0.5;
   }
 
-  /* ── LOGO / BRAND ── */
+  /* BRAND */
   .brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .brand-icon {
-    width: 40px; height: 40px;
+    width: 38px; height: 38px;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
+    font-size: 17px;
   }
   .brand-name {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 21px;
     letter-spacing: -0.5px;
   }
   .brand-name span { color: var(--accent); }
 
-  /* ── WELCOME ── */
+  /* WELCOME */
   .welcome-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: clamp(24px, 5vw, 32px);
+    font-size: clamp(22px, 5vw, 30px);
     line-height: 1.2;
     margin-bottom: 8px;
   }
   .welcome-sub {
     color: var(--muted);
-    font-size: 15px;
-    margin-bottom: 32px;
+    font-size: 14px;
+    margin-bottom: 28px;
     line-height: 1.6;
   }
 
-  /* ── INPUTS ── */
+  /* INPUTS */
   .field-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--muted);
     letter-spacing: 0.5px;
@@ -116,52 +116,48 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 14px 16px;
+    padding: 13px 15px;
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     outline: none;
     transition: border-color 0.2s;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
   .text-input:focus { border-color: var(--accent); }
   .text-input::placeholder { color: var(--muted); }
 
-  /* ── ROLE PICKER ── */
+  /* ROLE PICKER */
   .role-label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--muted);
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .role-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .role-card {
     background: var(--surface);
     border: 2px solid var(--border);
     border-radius: 14px;
-    padding: 20px 16px;
+    padding: 18px 14px;
     cursor: pointer;
     transition: all 0.2s;
     text-align: center;
   }
   .role-card:hover { border-color: var(--accent); background: var(--surface2); }
   .role-card.selected { border-color: var(--accent); background: rgba(0,212,255,0.06); }
-  .role-card .role-emoji { font-size: 28px; margin-bottom: 8px; }
-  .role-card .role-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .role-card .role-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .role-card .role-emoji { font-size: 26px; margin-bottom: 7px; }
+  .role-card .role-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; }
+  .role-card .role-desc { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
-  /* ── BUTTONS ── */
+  /* BUTTONS */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -171,44 +167,44 @@
     border-radius: 12px;
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     border: none;
     transition: all 0.2s;
     text-decoration: none;
+    width: 100%;
   }
   .btn-primary {
     background: linear-gradient(135deg, var(--accent), #0099bb);
     color: #000;
-    font-weight: 700;
-    width: 100%;
   }
   .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
 
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
+  /* NEXT BUTTON — always visible, sticky at bottom of card */
+  .next-btn-wrap {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  #next-btn {
+    background: linear-gradient(135deg, var(--green), #059669);
+    color: #fff;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 14px;
+    letter-spacing: 0.3px;
+  }
+  #next-btn:hover { opacity: 0.92; transform: translateY(-1px); }
 
-  .btn-danger {
-    background: rgba(239,68,68,0.15);
-    border: 1px solid rgba(239,68,68,0.3);
-    color: var(--red);
-  }
-
-  /* ── PROGRESS BAR ── */
-  .progress-wrap {
-    margin-bottom: 28px;
-  }
+  /* PROGRESS BAR */
+  .progress-wrap { margin-bottom: 24px; }
   .progress-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
   .progress-track {
     height: 4px;
@@ -223,61 +219,55 @@
     transition: width 0.4s ease;
   }
 
-  /* ── QUESTION ── */
+  /* QUESTION */
   .q-number {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .q-text {
     font-family: 'Syne', sans-serif;
     font-weight: 600;
-    font-size: clamp(17px, 3.5vw, 22px);
+    font-size: clamp(16px, 3.5vw, 21px);
     line-height: 1.4;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     color: var(--text);
   }
 
-  /* ── KEYWORDS HINT ── */
-  .kw-hint {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 24px;
-  }
+  /* KEYWORDS HINT */
+  .kw-hint-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .kw-hint { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
   .kw-chip {
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: 3px 9px;
+    font-size: 11px;
     color: var(--muted);
   }
-  .kw-hint-label { font-size: 12px; color: var(--muted); width: 100%; }
 
-  /* ── MIC SECTION ── */
+  /* MIC AREA */
   .mic-area {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
     text-align: center;
   }
   .mic-btn {
-    width: 72px; height: 72px;
+    width: 68px; height: 68px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), #0099bb);
     border: none;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-    font-size: 28px;
+    margin: 0 auto 14px;
+    font-size: 26px;
     transition: all 0.2s;
-    position: relative;
   }
   .mic-btn:hover { transform: scale(1.05); }
   .mic-btn.recording {
@@ -288,23 +278,20 @@
     0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
     50% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
   }
-  .mic-status {
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .mic-status { font-size: 13px; color: var(--muted); }
   .mic-status.active { color: var(--red); font-weight: 500; }
 
   .transcript-box {
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px;
-    min-height: 80px;
-    font-size: 15px;
+    padding: 14px;
+    min-height: 70px;
+    font-size: 14px;
     line-height: 1.7;
     color: var(--text);
     text-align: left;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     transition: border-color 0.2s;
     word-break: break-word;
   }
@@ -314,10 +301,10 @@
   .countdown-ring {
     display: none;
     font-family: 'Syne', sans-serif;
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 800;
     color: var(--amber);
-    margin: 8px 0;
+    margin: 6px 0;
     animation: countPulse 1s ease infinite;
   }
   @keyframes countPulse {
@@ -330,63 +317,53 @@
     border: 1px solid rgba(239,68,68,0.3);
     color: var(--red);
     border-radius: 10px;
-    padding: 10px 24px;
+    padding: 9px 22px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     display: none;
   }
   .stop-btn:hover { background: rgba(239,68,68,0.2); }
 
-  /* ── SCORE CARD ── */
-  .score-header {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-  .score-big {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 52px;
-    line-height: 1;
-  }
+  /* SCORE CARD */
+  .score-header { text-align: center; margin-bottom: 22px; }
+  .score-big { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 50px; line-height: 1; }
   .score-big.green { color: var(--green); }
   .score-big.amber { color: var(--amber); }
   .score-big.red { color: var(--red); }
-  .score-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .score-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
   .score-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 20px;
   }
   .score-cell {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 14px 10px;
+    padding: 12px 8px;
     text-align: center;
   }
-  .score-cell .sc-val {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-  }
+  .score-cell .sc-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
   .score-cell .sc-val.green { color: var(--green); }
   .score-cell .sc-val.amber { color: var(--amber); }
   .score-cell .sc-val.red { color: var(--red); }
-  .score-cell .sc-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .score-cell .sc-name { font-size: 10px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
 
+  /* ANSWER TRANSCRIPT ON SCORE */
   .transcript-review {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px;
+    padding: 14px;
     margin-bottom: 16px;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text);
+    word-break: break-word;
   }
   .transcript-review-label {
     font-size: 11px;
@@ -394,35 +371,111 @@
     letter-spacing: 0.5px;
     color: var(--muted);
     margin-bottom: 8px;
+    font-weight: 600;
   }
 
-  .error-list {
-    margin-bottom: 16px;
+  /* highlighted wrong portions inside transcript */
+  .err-highlight {
+    background: rgba(239,68,68,0.18);
+    border-bottom: 2px solid var(--red);
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #fca5a5;
+    cursor: default;
   }
+  .warn-highlight {
+    background: rgba(245,158,11,0.15);
+    border-bottom: 2px solid var(--amber);
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #fcd34d;
+    cursor: default;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ERROR LIST */
+  .error-list { margin-bottom: 16px; }
   .error-item {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
     font-size: 13px;
+    margin-bottom: 8px;
+    line-height: 1.5;
   }
-  .error-item:last-child { border-bottom: none; }
   .error-tag {
-    background: rgba(239,68,68,0.12);
+    background: rgba(239,68,68,0.14);
     color: var(--red);
     border-radius: 5px;
     padding: 2px 7px;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
   }
-  .error-tag.warn { background: rgba(245,158,11,0.12); color: var(--amber); }
+  .error-tag.warn { background: rgba(245,158,11,0.14); color: var(--amber); }
+  .error-tag.info { background: rgba(0,212,255,0.1); color: var(--accent); }
 
-  .kw-result {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+  /* WRONG SENTENCE BLOCK */
+  .wrong-sentence-block {
+    margin-top: 6px;
+    background: rgba(239,68,68,0.06);
+    border-left: 3px solid var(--red);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #fca5a5;
+    font-style: italic;
+    word-break: break-word;
   }
+  .wrong-sentence-block.warn {
+    background: rgba(245,158,11,0.06);
+    border-left-color: var(--amber);
+    color: #fcd34d;
+  }
+  .wrong-sentence-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--muted);
+    margin-bottom: 3px;
+    font-style: normal;
+  }
+
+  /* NO ERRORS */
+  .no-errors-msg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  /* KEYWORD RESULT */
+  .kw-result { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
   .kw-hit {
     background: rgba(16,185,129,0.12);
     border: 1px solid rgba(16,185,129,0.3);
@@ -441,17 +494,9 @@
     text-decoration: line-through;
   }
 
-  /* ── FINAL REPORT ── */
-  .report-header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .report-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 26px;
-    margin-bottom: 4px;
-  }
+  /* FINAL REPORT */
+  .report-header { text-align: center; margin-bottom: 28px; }
+  .report-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; margin-bottom: 6px; }
   .report-role-badge {
     display: inline-block;
     background: rgba(0,212,255,0.1);
@@ -459,107 +504,75 @@
     color: var(--accent);
     border-radius: 99px;
     padding: 4px 14px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
   }
 
   .final-score-ring {
-    width: 120px; height: 120px;
+    width: 116px; height: 116px;
     border-radius: 50%;
     background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--surface2) 0);
     display: flex; align-items: center; justify-content: center;
-    margin: 24px auto;
+    margin: 20px auto;
     position: relative;
   }
   .final-score-ring::after {
     content: '';
     position: absolute;
-    width: 88px; height: 88px;
+    width: 84px; height: 84px;
     border-radius: 50%;
     background: var(--card);
   }
-  .final-score-inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-  .final-score-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 1;
-  }
-  .final-score-pct { font-size: 12px; color: var(--muted); }
+  .final-score-inner { position: relative; z-index: 1; text-align: center; }
+  .final-score-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px; line-height: 1; }
+  .final-score-pct { font-size: 11px; color: var(--muted); }
 
-  .avg-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .avg-cell {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 8px;
-    text-align: center;
-  }
-  .avg-cell .av { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
-  .avg-cell .av-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .avg-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+  .avg-cell { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 13px 8px; text-align: center; }
+  .avg-cell .av { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 19px; }
+  .avg-cell .av-label { font-size: 10px; color: var(--muted); margin-top: 3px; }
 
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    margin-bottom: 14px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .improvement-list { margin-bottom: 28px; }
+  /* IMPROVEMENT */
+  .improvement-list { margin-bottom: 24px; }
   .improvement-item {
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    padding: 14px;
+    padding: 13px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 13px;
+    line-height: 1.6;
   }
-  .improvement-item .imp-icon { font-size: 20px; flex-shrink: 0; }
+  .imp-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 
-  .q-summary-list { margin-bottom: 28px; }
+  /* Q SUMMARY */
+  .q-summary-list { margin-bottom: 24px; }
   .q-summary-row {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 0;
+    padding: 11px 0;
     border-bottom: 1px solid var(--border);
     font-size: 13px;
   }
   .q-summary-row:last-child { border-bottom: none; }
   .q-num-badge {
-    width: 28px; height: 28px;
-    border-radius: 8px;
+    width: 26px; height: 26px;
+    border-radius: 7px;
     background: var(--surface2);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     flex-shrink: 0;
   }
   .q-sum-text { flex: 1; color: var(--muted); }
-  .q-sum-score { font-weight: 600; font-family: 'Syne', sans-serif; font-size: 15px; }
+  .q-sum-score { font-weight: 700; font-family: 'Syne', sans-serif; font-size: 14px; }
   .q-sum-score.green { color: var(--green); }
   .q-sum-score.amber { color: var(--amber); }
   .q-sum-score.red { color: var(--red); }
@@ -579,59 +592,42 @@
   }
   .restart-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ── BROWSER WARNING ── */
+  /* BROWSER WARNING */
   .browser-warn {
     background: rgba(245,158,11,0.08);
     border: 1px solid rgba(245,158,11,0.25);
     border-radius: 10px;
-    padding: 12px 16px;
+    padding: 12px 14px;
     font-size: 13px;
     color: var(--amber);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     display: none;
   }
 
-  /* ── DIVIDER ── */
-  .divider { height: 1px; background: var(--border); margin: 20px 0; }
-
-  /* ── UTILITY ── */
-  .text-center { text-align: center; }
-  .mt8 { margin-top: 8px; }
-  .mt16 { margin-top: 16px; }
-  .mt24 { margin-top: 24px; }
-  .flex-row { display: flex; gap: 10px; }
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 18px 0; }
 
   @media (max-width: 480px) {
-    .card { padding: 28px 20px; }
-    .score-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-    .score-cell { padding: 12px 8px; }
-    .score-cell .sc-val { font-size: 18px; }
+    .card { padding: 24px 16px; }
+    .score-cell .sc-val { font-size: 17px; }
   }
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- ══════════════════════════════════════
-       SCREEN 1 — WELCOME
-  ══════════════════════════════════════ -->
+  <!-- SCREEN 1: WELCOME -->
   <div id="screen-welcome" class="screen active">
     <div class="card">
       <div class="brand">
         <div class="brand-icon">🎯</div>
         <div class="brand-name">Mock<span>Buddy</span></div>
       </div>
-
       <div class="welcome-title">Your Personal<br>Interview Coach</div>
-      <p class="welcome-sub">Practice HR interview questions with real-time speech recognition, grammar analysis, and keyword scoring. Powered for Service Desk roles.</p>
-
-      <div id="browser-warn" class="browser-warn">
-        ⚠️ Your browser may have limited speech recognition support. For best experience, use <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong>.
-      </div>
-
+      <p class="welcome-sub">Practice HR interview questions with real-time speech recognition, grammar analysis, and keyword scoring — built for Service Desk roles.</p>
+      <div id="browser-warn" class="browser-warn"></div>
       <div class="field-label">Your Name</div>
       <input type="text" id="name-input" class="text-input" placeholder="Enter your full name" maxlength="50" autocomplete="off" />
-
       <div class="role-label">I am a</div>
       <div class="role-grid">
         <div class="role-card" id="role-fresher" onclick="selectRole('fresher')">
@@ -645,56 +641,43 @@
           <div class="role-desc">3 – 4 years experience</div>
         </div>
       </div>
-
-      <button class="btn btn-primary" id="start-btn" onclick="startSession()" disabled>
-        Start Practice Session →
-      </button>
+      <button class="btn btn-primary" id="start-btn" onclick="startSession()" disabled>Start Practice Session →</button>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN 2 — QUESTION
-  ══════════════════════════════════════ -->
+  <!-- SCREEN 2: QUESTION -->
   <div id="screen-question" class="screen">
     <div class="card">
       <div class="brand">
         <div class="brand-icon">🎯</div>
         <div class="brand-name">Mock<span>Buddy</span></div>
       </div>
-
       <div class="progress-wrap">
         <div class="progress-meta">
           <span id="q-progress-label">Question 1 of 10</span>
-          <span id="q-candidate-name" style="color:var(--accent); font-weight:600;"></span>
+          <span id="q-candidate-name" style="color:var(--accent);font-weight:600;"></span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" id="progress-fill" style="width:10%"></div>
         </div>
       </div>
-
       <div class="q-number" id="q-number">Q1</div>
       <div class="q-text" id="q-text">Loading question...</div>
-
       <div class="kw-hint-label">💡 Try to include these topics in your answer:</div>
       <div class="kw-hint" id="kw-hint"></div>
-
       <div class="mic-area">
         <button class="mic-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
-        <div class="mic-status" id="mic-status">Press to start answering</div>
+        <div class="mic-status" id="mic-status">Press microphone to start answering</div>
         <div class="countdown-ring" id="countdown-ring">5</div>
       </div>
-
       <div class="transcript-box" id="transcript-box">
         <span class="transcript-placeholder" id="transcript-placeholder">Your speech will appear here live as you speak...</span>
       </div>
-
       <button class="stop-btn" id="stop-btn" onclick="stopRecording()">■ Stop Recording</button>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN 3 — PER-QUESTION SCORE
-  ══════════════════════════════════════ -->
+  <!-- SCREEN 3: PER-QUESTION SCORE -->
   <div id="screen-score" class="screen">
     <div class="card">
       <div class="brand">
@@ -702,8 +685,18 @@
         <div class="brand-name">Mock<span>Buddy</span></div>
       </div>
 
+      <!-- progress on score screen too -->
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="score-q-label">Question 1 Score</span>
+          <span id="score-progress-label" style="color:var(--muted);"></span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="score-progress-fill" style="width:10%"></div>
+        </div>
+      </div>
+
       <div class="score-header">
-        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;" id="score-q-label">Question 1 Score</div>
         <div class="score-big" id="score-total">0</div>
         <div class="score-label">out of 100</div>
       </div>
@@ -715,770 +708,46 @@
         </div>
         <div class="score-cell">
           <div class="sc-val" id="sc-grammar">0</div>
-          <div class="sc-name">✅ Grammar<br><span style="font-size:10px;color:var(--muted)">/ 40 pts</span></div>
+          <div class="sc-name">✅ Grammar<br><span style="font-size:10px;color:var(--muted)">/40 pts</span></div>
         </div>
         <div class="score-cell">
           <div class="sc-val" id="sc-keywords">0</div>
-          <div class="sc-name">🔑 Keywords<br><span style="font-size:10px;color:var(--muted)">/ 30 pts</span></div>
+          <div class="sc-name">🔑 Keywords<br><span style="font-size:10px;color:var(--muted)">/30 pts</span></div>
         </div>
       </div>
 
-      <div class<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MockBuddy — Interview Practice</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --surface2: #1a2235;
-    --border: #1f2d45;
-    --accent: #00d4ff;
-    --accent2: #7c3aed;
-    --green: #10b981;
-    --amber: #f59e0b;
-    --red: #ef4444;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --card: #131c2e;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,212,255,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.06) 0%, transparent 50%);
-  }
-
-  #app { width: 100%; max-width: 680px; }
-
-  .screen { display: none; }
-  .screen.active { display: block; animation: fadeUp 0.4s ease; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0.5;
-  }
-
-  /* ── LOGO / BRAND ── */
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 32px;
-  }
-  .brand-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .brand-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-  }
-  .brand-name span { color: var(--accent); }
-
-  /* ── WELCOME ── */
-  .welcome-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(24px, 5vw, 32px);
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-  .welcome-sub {
-    color: var(--muted);
-    font-size: 15px;
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-
-  /* ── INPUTS ── */
-  .field-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .text-input {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 24px;
-  }
-  .text-input:focus { border-color: var(--accent); }
-  .text-input::placeholder { color: var(--muted); }
-
-  /* ── ROLE PICKER ── */
-  .role-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .role-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-  .role-card {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .role-card:hover { border-color: var(--accent); background: var(--surface2); }
-  .role-card.selected { border-color: var(--accent); background: rgba(0,212,255,0.06); }
-  .role-card .role-emoji { font-size: 28px; margin-bottom: 8px; }
-  .role-card .role-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .role-card .role-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), #0099bb);
-    color: #000;
-    font-weight: 700;
-    width: 100%;
-  }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-  .btn-danger {
-    background: rgba(239,68,68,0.15);
-    border: 1px solid rgba(239,68,68,0.3);
-    color: var(--red);
-  }
-
-  /* ── PROGRESS BAR ── */
-  .progress-wrap {
-    margin-bottom: 28px;
-  }
-  .progress-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  .progress-track {
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 99px;
-    transition: width 0.4s ease;
-  }
-
-  /* ── QUESTION ── */
-  .q-number {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .q-text {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: clamp(17px, 3.5vw, 22px);
-    line-height: 1.4;
-    margin-bottom: 24px;
-    color: var(--text);
-  }
-
-  /* ── KEYWORDS HINT ── */
-  .kw-hint {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 24px;
-  }
-  .kw-chip {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .kw-hint-label { font-size: 12px; color: var(--muted); width: 100%; }
-
-  /* ── MIC SECTION ── */
-  .mic-area {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .mic-btn {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #0099bb);
-    border: none;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-    font-size: 28px;
-    transition: all 0.2s;
-    position: relative;
-  }
-  .mic-btn:hover { transform: scale(1.05); }
-  .mic-btn.recording {
-    background: linear-gradient(135deg, var(--red), #cc0000);
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
-    50% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
-  }
-  .mic-status {
-    font-size: 13px;
-    color: var(--muted);
-  }
-  .mic-status.active { color: var(--red); font-weight: 500; }
-
-  .transcript-box {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    min-height: 80px;
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text);
-    text-align: left;
-    margin-bottom: 16px;
-    transition: border-color 0.2s;
-    word-break: break-word;
-  }
-  .transcript-box.live { border-color: var(--red); }
-  .transcript-placeholder { color: var(--muted); font-style: italic; }
-
-  .countdown-ring {
-    display: none;
-    font-family: 'Syne', sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--amber);
-    margin: 8px 0;
-    animation: countPulse 1s ease infinite;
-  }
-  @keyframes countPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-
-  .stop-btn {
-    background: rgba(239,68,68,0.12);
-    border: 1px solid rgba(239,68,68,0.3);
-    color: var(--red);
-    border-radius: 10px;
-    padding: 10px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    display: none;
-  }
-  .stop-btn:hover { background: rgba(239,68,68,0.2); }
-
-  /* ── SCORE CARD ── */
-  .score-header {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-  .score-big {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 52px;
-    line-height: 1;
-  }
-  .score-big.green { color: var(--green); }
-  .score-big.amber { color: var(--amber); }
-  .score-big.red { color: var(--red); }
-  .score-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
-
-  .score-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .score-cell {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 10px;
-    text-align: center;
-  }
-  .score-cell .sc-val {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-  }
-  .score-cell .sc-val.green { color: var(--green); }
-  .score-cell .sc-val.amber { color: var(--amber); }
-  .score-cell .sc-val.red { color: var(--red); }
-  .score-cell .sc-name { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-  .transcript-review {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--text);
-  }
-  .transcript-review-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .error-list {
-    margin-bottom: 16px;
-  }
-  .error-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .error-item:last-child { border-bottom: none; }
-  .error-tag {
-    background: rgba(239,68,68,0.12);
-    color: var(--red);
-    border-radius: 5px;
-    padding: 2px 7px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .error-tag.warn { background: rgba(245,158,11,0.12); color: var(--amber); }
-
-  .kw-result {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
-  }
-  .kw-hit {
-    background: rgba(16,185,129,0.12);
-    border: 1px solid rgba(16,185,129,0.3);
-    color: var(--green);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-  }
-  .kw-miss {
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.2);
-    color: var(--muted);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 12px;
-    text-decoration: line-through;
-  }
-
-  /* ── FINAL REPORT ── */
-  .report-header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .report-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 26px;
-    margin-bottom: 4px;
-  }
-  .report-role-badge {
-    display: inline-block;
-    background: rgba(0,212,255,0.1);
-    border: 1px solid rgba(0,212,255,0.3);
-    color: var(--accent);
-    border-radius: 99px;
-    padding: 4px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .final-score-ring {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--surface2) 0);
-    display: flex; align-items: center; justify-content: center;
-    margin: 24px auto;
-    position: relative;
-  }
-  .final-score-ring::after {
-    content: '';
-    position: absolute;
-    width: 88px; height: 88px;
-    border-radius: 50%;
-    background: var(--card);
-  }
-  .final-score-inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-  .final-score-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-    line-height: 1;
-  }
-  .final-score-pct { font-size: 12px; color: var(--muted); }
-
-  .avg-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 28px;
-  }
-  .avg-cell {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 8px;
-    text-align: center;
-  }
-  .avg-cell .av { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
-  .avg-cell .av-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    margin-bottom: 14px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .improvement-list { margin-bottom: 28px; }
-  .improvement-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .improvement-item .imp-icon { font-size: 20px; flex-shrink: 0; }
-
-  .q-summary-list { margin-bottom: 28px; }
-  .q-summary-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .q-summary-row:last-child { border-bottom: none; }
-  .q-num-badge {
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    background: var(--surface2);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    flex-shrink: 0;
-  }
-  .q-sum-text { flex: 1; color: var(--muted); }
-  .q-sum-score { font-weight: 600; font-family: 'Syne', sans-serif; font-size: 15px; }
-  .q-sum-score.green { color: var(--green); }
-  .q-sum-score.amber { color: var(--amber); }
-  .q-sum-score.red { color: var(--red); }
-
-  .restart-btn {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 12px;
-    padding: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .restart-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* ── BROWSER WARNING ── */
-  .browser-warn {
-    background: rgba(245,158,11,0.08);
-    border: 1px solid rgba(245,158,11,0.25);
-    border-radius: 10px;
-    padding: 12px 16px;
-    font-size: 13px;
-    color: var(--amber);
-    margin-bottom: 20px;
-    display: none;
-  }
-
-  /* ── DIVIDER ── */
-  .divider { height: 1px; background: var(--border); margin: 20px 0; }
-
-  /* ── UTILITY ── */
-  .text-center { text-align: center; }
-  .mt8 { margin-top: 8px; }
-  .mt16 { margin-top: 16px; }
-  .mt24 { margin-top: 24px; }
-  .flex-row { display: flex; gap: 10px; }
-
-  @media (max-width: 480px) {
-    .card { padding: 28px 20px; }
-    .score-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-    .score-cell { padding: 12px 8px; }
-    .score-cell .sc-val { font-size: 18px; }
-  }
-</style>
-</head>
-<body>
-<div id="app">
-
-  <!-- ══════════════════════════════════════
-       SCREEN 1 — WELCOME
-  ══════════════════════════════════════ -->
-  <div id="screen-welcome" class="screen active">
-    <div class="card">
-      <div class="brand">
-        <div class="brand-icon">🎯</div>
-        <div class="brand-name">Mock<span>Buddy</span></div>
-      </div>
-
-      <div class="welcome-title">Your Personal<br>Interview Coach</div>
-      <p class="welcome-sub">Practice HR interview questions with real-time speech recognition, grammar analysis, and keyword scoring. Powered for Service Desk roles.</p>
-
-      <div id="browser-warn" class="browser-warn">
-        ⚠️ Your browser may have limited speech recognition support. For best experience, use <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong>.
-      </div>
-
-      <div class="field-label">Your Name</div>
-      <input type="text" id="name-input" class="text-input" placeholder="Enter your full name" maxlength="50" autocomplete="off" />
-
-      <div class="role-label">I am a</div>
-      <div class="role-grid">
-        <div class="role-card" id="role-fresher" onclick="selectRole('fresher')">
-          <div class="role-emoji">🌱</div>
-          <div class="role-title">Fresher</div>
-          <div class="role-desc">0 – 1 year experience</div>
-        </div>
-        <div class="role-card" id="role-experienced" onclick="selectRole('experienced')">
-          <div class="role-emoji">💼</div>
-          <div class="role-title">Experienced</div>
-          <div class="role-desc">3 – 4 years experience</div>
-        </div>
-      </div>
-
-      <button class="btn btn-primary" id="start-btn" onclick="startSession()" disabled>
-        Start Practice Session →
-      </button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       SCREEN 2 — QUESTION
-  ══════════════════════════════════════ -->
-  <div id="screen-question" class="screen">
-    <div class="card">
-      <div class="brand">
-        <div class="brand-icon">🎯</div>
-        <div class="brand-name">Mock<span>Buddy</span></div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-meta">
-          <span id="q-progress-label">Question 1 of 10</span>
-          <span id="q-candidate-name" style="color:var(--accent); font-weight:600;"></span>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-fill" style="width:10%"></div>
-        </div>
-      </div>
-
-      <div class="q-number" id="q-number">Q1</div>
-      <div class="q-text" id="q-text">Loading question...</div>
-
-      <div class="kw-hint-label">💡 Try to include these topics in your answer:</div>
-      <div class="kw-hint" id="kw-hint"></div>
-
-      <div class="mic-area">
-        <button class="mic-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
-        <div class="mic-status" id="mic-status">Press to start answering</div>
-        <div class="countdown-ring" id="countdown-ring">5</div>
-      </div>
-
-      <div class="transcript-box" id="transcript-box">
-        <span class="transcript-placeholder" id="transcript-placeholder">Your speech will appear here live as you speak...</span>
-      </div>
-
-      <button class="stop-btn" id="stop-btn" onclick="stopRecording()">■ Stop Recording</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       SCREEN 3 — PER-QUESTION SCORE
-  ══════════════════════════════════════ -->
-  <div id="screen-score" class="screen">
-    <div class="card">
-      <div class="brand">
-        <div class="brand-icon">🎯</div>
-        <div class="brand-name">Mock<span>Buddy</span></div>
-      </div>
-
-      <div class="score-header">
-        <div style="font-size:13px; color:var(--muted); margin-bottom:6px;" id="score-q-label">Question 1 Score</div>
-        <div class="score-big" id="score-total">0</div>
-        <div class="score-label">out of 100</div>
-      </div>
-
-      <div class="score-grid">
-        <div class="score-cell">
-          <div class="sc-val" id="sc-speech">0</div>
-          <div class="sc-name">🗣️ Speech Rate<br><span id="sc-wpm" style="font-size:10px;color:var(--muted)"></span></div>
-        </div>
-        <div class="score-cell">
-          <div class="sc-val" id="sc-grammar">0</div>
-          <div class="sc-name">✅ Grammar<br><span style="font-size:10px;color:var(--muted)">/ 40 pts</span></div>
-        </div>
-        <div class="score-cell">
-          <div class="sc-val" id="sc-keywords">0</div>
-          <div class="sc-name">🔑 Keywords<br><span style="font-size:10px;color:var(--muted)">/ 30 pts</span></div>
-        </div>
-      </div>
-
-      <div class="transcript-review-label">YOUR ANSWER</div>
+      <!-- YOUR ANSWER with highlights -->
+      <div class="section-title">Your Answer</div>
+      <div class="transcript-review-label" id="highlight-note" style="font-size:11px;color:var(--muted);margin-bottom:8px;"></div>
       <div class="transcript-review" id="score-transcript">—</div>
 
-      <div id="errors-section" style="display:none;">
+      <!-- GRAMMAR ERRORS -->
+      <div id="errors-section">
         <div class="section-title">Grammar Issues Found</div>
         <div class="error-list" id="error-list"></div>
       </div>
 
+      <!-- KEYWORD COVERAGE -->
       <div class="section-title">Keyword Coverage</div>
       <div class="kw-result" id="kw-result"></div>
 
-      <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">
-        Next Question →
-      </button>
+      <!-- NEXT BUTTON — always at bottom, always visible -->
+      <div class="next-btn-wrap">
+        <button class="btn" id="next-btn" onclick="nextQuestion()">Next Question →</button>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       SCREEN 4 — FINAL REPORT
-  ══════════════════════════════════════ -->
+  <!-- SCREEN 4: FINAL REPORT -->
   <div id="screen-report" class="screen">
     <div class="card">
       <div class="brand">
         <div class="brand-icon">🎯</div>
         <div class="brand-name">Mock<span>Buddy</span></div>
       </div>
-
       <div class="report-header">
         <div class="report-name" id="report-name">—</div>
         <div class="report-role-badge" id="report-role">Fresher</div>
-
         <div class="final-score-ring" id="final-ring" style="--pct:0">
           <div class="final-score-inner">
             <div class="final-score-num" id="final-score-num">0</div>
@@ -1486,284 +755,110 @@
           </div>
         </div>
       </div>
-
       <div class="avg-grid">
-        <div class="avg-cell">
-          <div class="av" id="avg-speech">0</div>
-          <div class="av-label">🗣️ Speech</div>
-        </div>
-        <div class="avg-cell">
-          <div class="av" id="avg-grammar">0</div>
-          <div class="av-label">✅ Grammar</div>
-        </div>
-        <div class="avg-cell">
-          <div class="av" id="avg-keywords">0</div>
-          <div class="av-label">🔑 Keywords</div>
-        </div>
+        <div class="avg-cell"><div class="av" id="avg-speech">0</div><div class="av-label">🗣️ Speech</div></div>
+        <div class="avg-cell"><div class="av" id="avg-grammar">0</div><div class="av-label">✅ Grammar</div></div>
+        <div class="avg-cell"><div class="av" id="avg-keywords">0</div><div class="av-label">🔑 Keywords</div></div>
       </div>
-
       <div class="section-title">Areas of Improvement</div>
       <div class="improvement-list" id="improvement-list"></div>
-
       <div class="section-title">Question-wise Breakdown</div>
       <div class="q-summary-list" id="q-summary-list"></div>
-
       <button class="restart-btn" onclick="restartApp()">↺ Start New Session</button>
     </div>
   </div>
 
 </div>
-
 <script>
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  QUESTION BANKS
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 const FRESHER_QUESTIONS = [
-  {
-    q: "Tell me about yourself.",
-    kw: ["background", "education", "skills", "interest", "goal"]
-  },
-  {
-    q: "Why do you want to work in a service desk or IT support role?",
-    kw: ["technology", "problem solving", "helping", "communication", "interest"]
-  },
-  {
-    q: "What are your key strengths?",
-    kw: ["communication", "teamwork", "analytical", "adaptable", "quick learner"]
-  },
-  {
-    q: "What is your greatest weakness and how are you working to improve it?",
-    kw: ["weakness", "improve", "learning", "aware", "working on"]
-  },
-  {
-    q: "Describe a situation where you solved a problem on your own.",
-    kw: ["situation", "problem", "solution", "result", "independently"]
-  },
-  {
-    q: "How do you handle working under pressure or tight deadlines?",
-    kw: ["prioritize", "calm", "manage", "deadline", "focus"]
-  },
-  {
-    q: "What do you know about ITIL or IT service management?",
-    kw: ["ITIL", "incident", "service", "process", "best practice"]
-  },
-  {
-    q: "How would you handle a difficult or angry customer?",
-    kw: ["listen", "empathize", "calm", "solution", "patience"]
-  },
-  {
-    q: "What do you understand by a ticketing system?",
-    kw: ["ticket", "log", "track", "resolve", "categorize"]
-  },
-  {
-    q: "Explain the OSI model in simple terms.",
-    kw: ["layer", "network", "physical", "application", "protocol"]
-  },
-  {
-    q: "Where do you see yourself in three years?",
-    kw: ["growth", "skills", "senior", "contribute", "career"]
-  },
-  {
-    q: "Why should we hire you over other candidates?",
-    kw: ["unique", "skills", "learning", "dedicated", "value"]
-  },
-  {
-    q: "How do you prioritize tasks when you have multiple issues to handle?",
-    kw: ["priority", "urgent", "SLA", "organize", "systematic"]
-  },
-  {
-    q: "What do you know about first call resolution?",
-    kw: ["FCR", "resolve", "first contact", "customer", "efficiency"]
-  },
-  {
-    q: "Tell me about a time you worked as part of a team.",
-    kw: ["team", "collaborate", "communicate", "contribute", "result"]
-  },
-  {
-    q: "How do you keep yourself updated with new technologies?",
-    kw: ["read", "online", "courses", "practice", "learn"]
-  },
-  {
-    q: "What is the difference between hardware and software troubleshooting?",
-    kw: ["hardware", "software", "physical", "application", "diagnose"]
-  },
-  {
-    q: "How would you explain a technical issue to a non-technical user?",
-    kw: ["simple", "language", "step", "clear", "avoid jargon"]
-  },
-  {
-    q: "What motivates you to perform well at work?",
-    kw: ["achievement", "recognition", "growth", "customer", "passion"]
-  },
-  {
-    q: "Are you comfortable working in rotational shifts?",
-    kw: ["flexible", "adapt", "shifts", "available", "commitment"]
-  },
-  {
-    q: "What is a VPN and why is it used?",
-    kw: ["secure", "network", "remote", "encrypted", "connection"]
-  },
-  {
-    q: "What steps would you take if a user cannot connect to the internet?",
-    kw: ["restart", "check", "IP", "cable", "driver"]
-  },
-  {
-    q: "How do you ensure quality in your work?",
-    kw: ["attention", "review", "accurate", "process", "feedback"]
-  },
-  {
-    q: "What do you understand by SLA?",
-    kw: ["service level", "agreement", "time", "response", "resolution"]
-  },
-  {
-    q: "Do you have any questions for us?",
-    kw: ["growth", "team", "training", "expectations", "opportunity"]
-  }
+  { q: "Tell me about yourself.", kw: ["background","education","skills","interest","goal"] },
+  { q: "Why do you want to work in a service desk or IT support role?", kw: ["technology","problem solving","helping","communication","interest"] },
+  { q: "What are your key strengths?", kw: ["communication","teamwork","analytical","adaptable","quick learner"] },
+  { q: "What is your greatest weakness and how are you working to improve it?", kw: ["weakness","improve","learning","aware","working on"] },
+  { q: "Describe a situation where you solved a problem on your own.", kw: ["situation","problem","solution","result","independently"] },
+  { q: "How do you handle working under pressure or tight deadlines?", kw: ["prioritize","calm","manage","deadline","focus"] },
+  { q: "What do you know about ITIL or IT service management?", kw: ["ITIL","incident","service","process","best practice"] },
+  { q: "How would you handle a difficult or angry customer?", kw: ["listen","empathize","calm","solution","patience"] },
+  { q: "What do you understand by a ticketing system?", kw: ["ticket","log","track","resolve","categorize"] },
+  { q: "Explain the OSI model in simple terms.", kw: ["layer","network","physical","application","protocol"] },
+  { q: "Where do you see yourself in three years?", kw: ["growth","skills","senior","contribute","career"] },
+  { q: "Why should we hire you over other candidates?", kw: ["unique","skills","learning","dedicated","value"] },
+  { q: "How do you prioritize tasks when you have multiple issues to handle?", kw: ["priority","urgent","SLA","organize","systematic"] },
+  { q: "What do you know about first call resolution?", kw: ["FCR","resolve","first contact","customer","efficiency"] },
+  { q: "Tell me about a time you worked as part of a team.", kw: ["team","collaborate","communicate","contribute","result"] },
+  { q: "How do you keep yourself updated with new technologies?", kw: ["read","online","courses","practice","learn"] },
+  { q: "What is the difference between hardware and software troubleshooting?", kw: ["hardware","software","physical","application","diagnose"] },
+  { q: "How would you explain a technical issue to a non-technical user?", kw: ["simple","language","step","clear","avoid jargon"] },
+  { q: "What motivates you to perform well at work?", kw: ["achievement","recognition","growth","customer","passion"] },
+  { q: "Are you comfortable working in rotational shifts?", kw: ["flexible","adapt","shifts","available","commitment"] },
+  { q: "What is a VPN and why is it used?", kw: ["secure","network","remote","encrypted","connection"] },
+  { q: "What steps would you take if a user cannot connect to the internet?", kw: ["restart","check","IP","cable","driver"] },
+  { q: "How do you ensure quality in your work?", kw: ["attention","review","accurate","process","feedback"] },
+  { q: "What do you understand by SLA?", kw: ["service level","agreement","time","response","resolution"] },
+  { q: "Do you have any questions for us?", kw: ["growth","team","training","expectations","opportunity"] }
 ];
 
 const EXPERIENCED_QUESTIONS = [
-  {
-    q: "Walk me through your experience in IT service desk.",
-    kw: ["experience", "incident", "resolution", "team", "tools"]
-  },
-  {
-    q: "How do you handle a major incident that is affecting multiple users?",
-    kw: ["escalate", "communicate", "priority", "bridge call", "restore"]
-  },
-  {
-    q: "Describe your experience with ITSM tools like ServiceNow or Jira.",
-    kw: ["ServiceNow", "ticket", "workflow", "SLA", "category"]
-  },
-  {
-    q: "How do you ensure SLA compliance in your current role?",
-    kw: ["monitor", "SLA", "breach", "escalate", "report"]
-  },
-  {
-    q: "Tell me about a challenging ticket you resolved and what you learned.",
-    kw: ["incident", "diagnosis", "solution", "root cause", "lesson"]
-  },
-  {
-    q: "How do you mentor or guide junior team members?",
-    kw: ["coach", "knowledge sharing", "guide", "feedback", "support"]
-  },
-  {
-    q: "What is your experience with root cause analysis?",
-    kw: ["RCA", "5 whys", "investigate", "prevent", "document"]
-  },
-  {
-    q: "How do you manage shift handover effectively?",
-    kw: ["handover", "document", "pending", "communicate", "notes"]
-  },
-  {
-    q: "What KPIs have you been measured against in your current job?",
-    kw: ["KPI", "FCR", "CSAT", "MTTR", "SLA"]
-  },
-  {
-    q: "Describe a situation where you improved a process in your team.",
-    kw: ["process", "improve", "efficiency", "result", "initiative"]
-  },
-  {
-    q: "How do you handle a situation where a user is dissatisfied with the resolution?",
-    kw: ["listen", "escalate", "alternative", "follow up", "satisfaction"]
-  },
-  {
-    q: "What is your approach to troubleshooting a network issue?",
-    kw: ["ping", "trace", "DNS", "layer", "isolate"]
-  },
-  {
-    q: "How have you dealt with a high volume of tickets during peak hours?",
-    kw: ["prioritize", "triage", "queue", "manage", "team work"]
-  },
-  {
-    q: "What experience do you have with Active Directory?",
-    kw: ["AD", "user account", "reset", "group policy", "permissions"]
-  },
-  {
-    q: "Tell me about a time you had to escalate an issue and why.",
-    kw: ["escalation", "reason", "process", "outcome", "communication"]
-  },
-  {
-    q: "How do you stay calm when handling multiple escalations at once?",
-    kw: ["prioritize", "calm", "communicate", "systematic", "manage"]
-  },
-  {
-    q: "What is change management in your experience?",
-    kw: ["change", "approval", "CAB", "risk", "implement"]
-  },
-  {
-    q: "How do you document incidents and solutions for future reference?",
-    kw: ["knowledge base", "document", "steps", "searchable", "reuse"]
-  },
-  {
-    q: "Describe your experience with remote desktop support tools.",
-    kw: ["remote", "TeamViewer", "RDP", "access", "troubleshoot"]
-  },
-  {
-    q: "What steps do you take to ensure data security during support calls?",
-    kw: ["verify", "identity", "confidential", "policy", "secure"]
-  },
-  {
-    q: "How have you handled a situation where you did not know the answer?",
-    kw: ["research", "escalate", "honest", "follow up", "team"]
-  },
-  {
-    q: "What is your experience with ITIL framework in real scenarios?",
-    kw: ["ITIL", "incident", "problem", "change", "service request"]
-  },
-  {
-    q: "How do you balance technical skills and communication skills in your role?",
-    kw: ["technical", "communication", "explain", "understand", "bridge"]
-  },
-  {
-    q: "Where do you want to grow in the next two to three years?",
-    kw: ["grow", "senior", "lead", "skills", "goal"]
-  },
-  {
-    q: "What value would you bring to our service desk team?",
-    kw: ["experience", "improve", "contribute", "knowledge", "team"]
-  }
+  { q: "Walk me through your experience in IT service desk.", kw: ["experience","incident","resolution","team","tools"] },
+  { q: "How do you handle a major incident that is affecting multiple users?", kw: ["escalate","communicate","priority","bridge call","restore"] },
+  { q: "Describe your experience with ITSM tools like ServiceNow or Jira.", kw: ["ServiceNow","ticket","workflow","SLA","category"] },
+  { q: "How do you ensure SLA compliance in your current role?", kw: ["monitor","SLA","breach","escalate","report"] },
+  { q: "Tell me about a challenging ticket you resolved and what you learned.", kw: ["incident","diagnosis","solution","root cause","lesson"] },
+  { q: "How do you mentor or guide junior team members?", kw: ["coach","knowledge sharing","guide","feedback","support"] },
+  { q: "What is your experience with root cause analysis?", kw: ["RCA","5 whys","investigate","prevent","document"] },
+  { q: "How do you manage shift handover effectively?", kw: ["handover","document","pending","communicate","notes"] },
+  { q: "What KPIs have you been measured against in your current job?", kw: ["KPI","FCR","CSAT","MTTR","SLA"] },
+  { q: "Describe a situation where you improved a process in your team.", kw: ["process","improve","efficiency","result","initiative"] },
+  { q: "How do you handle a situation where a user is dissatisfied with the resolution?", kw: ["listen","escalate","alternative","follow up","satisfaction"] },
+  { q: "What is your approach to troubleshooting a network issue?", kw: ["ping","trace","DNS","layer","isolate"] },
+  { q: "How have you dealt with a high volume of tickets during peak hours?", kw: ["prioritize","triage","queue","manage","team work"] },
+  { q: "What experience do you have with Active Directory?", kw: ["AD","user account","reset","group policy","permissions"] },
+  { q: "Tell me about a time you had to escalate an issue and why.", kw: ["escalation","reason","process","outcome","communication"] },
+  { q: "How do you stay calm when handling multiple escalations at once?", kw: ["prioritize","calm","communicate","systematic","manage"] },
+  { q: "What is change management in your experience?", kw: ["change","approval","CAB","risk","implement"] },
+  { q: "How do you document incidents and solutions for future reference?", kw: ["knowledge base","document","steps","searchable","reuse"] },
+  { q: "Describe your experience with remote desktop support tools.", kw: ["remote","TeamViewer","RDP","access","troubleshoot"] },
+  { q: "What steps do you take to ensure data security during support calls?", kw: ["verify","identity","confidential","policy","secure"] },
+  { q: "How have you handled a situation where you did not know the answer?", kw: ["research","escalate","honest","follow up","team"] },
+  { q: "What is your experience with ITIL framework in real scenarios?", kw: ["ITIL","incident","problem","change","service request"] },
+  { q: "How do you balance technical skills and communication skills in your role?", kw: ["technical","communication","explain","understand","bridge"] },
+  { q: "Where do you want to grow in the next two to three years?", kw: ["grow","senior","lead","skills","goal"] },
+  { q: "What value would you bring to our service desk team?", kw: ["experience","improve","contribute","knowledge","team"] }
 ];
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  APP STATE
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 let state = {
-  name: '',
-  role: '',
-  questions: [],
-  currentIndex: 0,
-  results: [],
-  transcript: '',
-  isRecording: false,
-  startTime: null,
-  recognition: null,
-  autoStopTimer: null,
-  countdownTimer: null,
-  countdownVal: 20
+  name: '', role: '', questions: [], currentIndex: 0,
+  results: [], transcript: '', isRecording: false,
+  startTime: null, recognition: null,
+  autoStopTimer: null, countdownVal: 20
 };
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  INIT
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 window.onload = () => {
-  // Check browser support
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    document.getElementById('browser-warn').style.display = 'block';
-    document.getElementById('browser-warn').textContent =
-      '⚠️ Speech recognition is NOT supported in this browser. Please use Google Chrome or Microsoft Edge for full functionality.';
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const warn = document.getElementById('browser-warn');
+  if (!SR) {
+    warn.style.display = 'block';
+    warn.textContent = '⚠️ Speech recognition is NOT supported in this browser. Please use Google Chrome or Microsoft Edge.';
   } else {
-    // Check if likely non-Chrome
     const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     const isEdge = /Edg/.test(navigator.userAgent);
     if (!isChrome && !isEdge) {
-      document.getElementById('browser-warn').style.display = 'block';
+      warn.style.display = 'block';
+      warn.textContent = '⚠️ For best speech recognition experience, please use Google Chrome or Microsoft Edge.';
     }
   }
-
   document.getElementById('name-input').addEventListener('input', validateStart);
 };
 
@@ -1779,9 +874,9 @@ function selectRole(role) {
   validateStart();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  SESSION START
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function startSession() {
   state.name = document.getElementById('name-input').value.trim();
@@ -1797,12 +892,11 @@ function showQuestion() {
   const q = state.questions[idx];
 
   document.getElementById('q-candidate-name').textContent = state.name;
-  document.getElementById('q-number').textContent = `Q${idx + 1}`;
+  document.getElementById('q-number').textContent = 'Q' + (idx + 1);
   document.getElementById('q-text').textContent = q.q;
-  document.getElementById('q-progress-label').textContent = `Question ${idx + 1} of 10`;
-  document.getElementById('progress-fill').style.width = `${((idx + 1) / 10) * 100}%`;
+  document.getElementById('q-progress-label').textContent = 'Question ' + (idx + 1) + ' of 10';
+  document.getElementById('progress-fill').style.width = (((idx + 1) / 10) * 100) + '%';
 
-  // Keywords hint
   const hint = document.getElementById('kw-hint');
   hint.innerHTML = '';
   q.kw.forEach(k => {
@@ -1812,83 +906,69 @@ function showQuestion() {
     hint.appendChild(chip);
   });
 
-  // Reset mic area
   resetMicUI();
-
   showScreen('screen-question');
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  SPEECH RECOGNITION
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function toggleMic() {
-  if (state.isRecording) {
-    stopRecording();
-  } else {
-    startRecording();
-  }
+  if (state.isRecording) stopRecording();
+  else startRecording();
 }
 
 function startRecording() {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    alert('Speech recognition not supported. Please use Google Chrome or Edge.');
-    return;
-  }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { alert('Speech recognition not supported. Please use Google Chrome or Edge.'); return; }
 
   state.transcript = '';
   state.isRecording = true;
   state.startTime = Date.now();
   state.countdownVal = 20;
 
-  const micBtn = document.getElementById('mic-btn');
-  const micStatus = document.getElementById('mic-status');
-  const stopBtn = document.getElementById('stop-btn');
-  const transcriptBox = document.getElementById('transcript-box');
-  const placeholder = document.getElementById('transcript-placeholder');
+  const micBtn   = document.getElementById('mic-btn');
+  const micStat  = document.getElementById('mic-status');
+  const stopBtn  = document.getElementById('stop-btn');
+  const tBox     = document.getElementById('transcript-box');
+  const ph       = document.getElementById('transcript-placeholder');
 
   micBtn.classList.add('recording');
   micBtn.textContent = '⏹';
-  micStatus.textContent = 'Recording... speak now';
-  micStatus.classList.add('active');
+  micStat.textContent = 'Recording... speak now';
+  micStat.classList.add('active');
   stopBtn.style.display = 'inline-flex';
-  transcriptBox.classList.add('live');
-  if (placeholder) placeholder.style.display = 'none';
+  tBox.classList.add('live');
+  if (ph) ph.style.display = 'none';
 
-  // Recognition
-  state.recognition = new SpeechRecognition();
+  state.recognition = new SR();
   state.recognition.continuous = true;
   state.recognition.interimResults = true;
   state.recognition.lang = 'en-IN';
 
-  let finalTranscript = '';
-  let interimTranscript = '';
+  let finalText = '';
 
   state.recognition.onresult = (event) => {
-    interimTranscript = '';
+    let interim = '';
     for (let i = event.resultIndex; i < event.results.length; i++) {
       const t = event.results[i][0].transcript;
-      if (event.results[i].isFinal) {
-        finalTranscript += t + ' ';
-      } else {
-        interimTranscript += t;
-      }
+      if (event.results[i].isFinal) finalText += t + ' ';
+      else interim += t;
     }
-    transcriptBox.textContent = finalTranscript + interimTranscript;
-    state.transcript = finalTranscript + interimTranscript;
+    tBox.textContent = finalText + interim;
+    state.transcript = finalText + interim;
     resetAutoStop();
   };
 
   state.recognition.onerror = (e) => {
     if (e.error !== 'no-speech' && e.error !== 'aborted') {
-      micStatus.textContent = 'Mic error: ' + e.error;
+      micStat.textContent = 'Mic error: ' + e.error;
     }
   };
 
   state.recognition.onend = () => {
     if (state.isRecording) {
-      // Restart if still in recording mode
       try { state.recognition.start(); } catch(e) {}
     }
   };
@@ -1900,14 +980,10 @@ function startRecording() {
 function startAutoStop() {
   state.countdownVal = 20;
   updateCountdownUI(20, false);
-
   state.autoStopTimer = setInterval(() => {
     state.countdownVal--;
-    const showCountdown = state.countdownVal <= 5;
-    updateCountdownUI(state.countdownVal, showCountdown);
-    if (state.countdownVal <= 0) {
-      stopRecording();
-    }
+    updateCountdownUI(state.countdownVal, state.countdownVal <= 5);
+    if (state.countdownVal <= 0) stopRecording();
   }, 1000);
 }
 
@@ -1918,14 +994,14 @@ function resetAutoStop() {
 
 function updateCountdownUI(val, show) {
   const ring = document.getElementById('countdown-ring');
-  const status = document.getElementById('mic-status');
+  const stat = document.getElementById('mic-status');
   if (show && state.isRecording) {
     ring.style.display = 'block';
     ring.textContent = val;
-    status.textContent = `Auto-stopping in ${val}s...`;
+    stat.textContent = 'Auto-stopping in ' + val + 's...';
   } else {
     ring.style.display = 'none';
-    if (state.isRecording) status.textContent = 'Recording... speak now';
+    if (state.isRecording) stat.textContent = 'Recording... speak now';
   }
 }
 
@@ -1933,101 +1009,111 @@ function stopRecording() {
   if (!state.isRecording) return;
   state.isRecording = false;
   clearInterval(state.autoStopTimer);
-
   if (state.recognition) {
     try { state.recognition.stop(); } catch(e) {}
     state.recognition = null;
   }
-
   const duration = (Date.now() - state.startTime) / 1000;
   evaluateAnswer(state.transcript.trim(), duration);
 }
 
 function resetMicUI() {
-  const micBtn = document.getElementById('mic-btn');
-  const micStatus = document.getElementById('mic-status');
+  const micBtn  = document.getElementById('mic-btn');
+  const micStat = document.getElementById('mic-status');
   const stopBtn = document.getElementById('stop-btn');
-  const transcriptBox = document.getElementById('transcript-box');
-  const ring = document.getElementById('countdown-ring');
-  const placeholder = document.getElementById('transcript-placeholder');
+  const tBox    = document.getElementById('transcript-box');
+  const ring    = document.getElementById('countdown-ring');
 
   micBtn.classList.remove('recording');
   micBtn.textContent = '🎤';
-  micStatus.textContent = 'Press to start answering';
-  micStatus.classList.remove('active');
+  micStat.textContent = 'Press microphone to start answering';
+  micStat.classList.remove('active');
   stopBtn.style.display = 'none';
-  transcriptBox.classList.remove('live');
-  transcriptBox.textContent = '';
+  tBox.classList.remove('live');
+  tBox.innerHTML = '<span class="transcript-placeholder" id="transcript-placeholder">Your speech will appear here live as you speak...</span>';
   ring.style.display = 'none';
-
-  if (!placeholder) {
-    const ph = document.createElement('span');
-    ph.className = 'transcript-placeholder';
-    ph.id = 'transcript-placeholder';
-    ph.textContent = 'Your speech will appear here live as you speak...';
-    transcriptBox.appendChild(ph);
-  } else {
-    placeholder.style.display = 'inline';
-  }
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  GRAMMAR ENGINE
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
-const FILLER_WORDS = ['um', 'uh', 'er', 'ah', 'like', 'basically', 'you know', 'actually', 'literally', 'right so', 'kind of', 'sort of', 'i mean'];
-
-const STATIVE_VERBS_CONTINUOUS = [
-  { pattern: /\b(i am|he is|she is|they are|we are|you are)\s+(knowing|understanding|believing|thinking|feeling|wanting|needing|having|owning|belonging|preferring|hating|loving|liking|seeing|hearing|smelling|tasting)\b/gi, msg: 'Stative verb used in continuous tense', type: 'Tense' },
+const FILLER_WORDS = [
+  'you know','kind of','sort of','i mean',
+  'um','uh','er','ah','like','basically','actually','literally'
 ];
 
 const GRAMMAR_RULES = [
-  // SVA errors
-  { pattern: /\bhe\s+(go|come|work|do|eat|drink|run|walk|play|speak|write|read|make|take|give|get|bring|think|know|want|need|use|find|try|ask|seem|feel|become|leave|put|keep|let|begin|show|hear|play|move|live|believe|hold|happen|include|continue|set|turn|serve|move|mean|change|lead|understand|watch|follow|stop|create|speak|sit|stand|learn|walk|run|pay|fall|reach|kill|remain|suggest|raise|pass|sell|require|report|decide|pull)\b/gi, msg: 'SVA error — "he" requires verb with "-s"', type: 'SVA' },
-  { pattern: /\bshe\s+(go|come|work|do|eat|drink|run|walk|play|speak|write|read|make|take|give|get|bring|think|know|want|need|use|find|try|ask|seem|feel|become|leave|put|keep|let|begin|show|hear|play|move|live|believe|hold|happen|include|continue|set|turn|serve|move|mean|change|lead|understand|watch|follow|stop|create|speak|sit|stand|learn|walk|run|pay|fall|reach|kill|remain|suggest|raise|pass|sell|require|report|decide|pull)\b/gi, msg: 'SVA error — "she" requires verb with "-s"', type: 'SVA' },
-  { pattern: /\b(i|we|you|they)\s+(goes|comes|works|does|eats|drinks|runs|walks|plays|speaks|writes|reads|makes|takes|gives|gets|brings|thinks|knows|wants|needs|uses|finds|tries|asks|seems|feels|becomes|leaves|puts|keeps|lets|begins|shows|hears|moves|lives|believes|holds|happens|includes|continues|sets|turns|serves|means|changes|leads|understands|watches|follows|stops|creates|sits|stands|learns|pays|falls|reaches|remains|suggests|raises|passes|sells|requires|reports|decides|pulls)\b/gi, msg: 'SVA error — plural subject should not use "-s" form', type: 'SVA' },
+  // SVA — He/She + bare verb
+  { pattern: /\bhe\s+(go|come|work|do|eat|drink|run|walk|play|speak|write|read|make|take|give|get|bring|think|know|want|need|use|find|try|ask|seem|feel|become|leave|put|keep|let|begin|show|hear|move|live|believe|hold|happen|include|continue|set|turn|serve|mean|change|lead|understand|watch|follow|stop|create|sit|stand|learn|pay|fall|reach|remain|suggest|raise|pass|sell|require|report|decide|pull)\b/gi,
+    msg: 'SVA error — "he" needs "-s" form (e.g. "he works", not "he work")', type: 'SVA' },
+  { pattern: /\bshe\s+(go|come|work|do|eat|drink|run|walk|play|speak|write|read|make|take|give|get|bring|think|know|want|need|use|find|try|ask|seem|feel|become|leave|put|keep|let|begin|show|hear|move|live|believe|hold|happen|include|continue|set|turn|serve|mean|change|lead|understand|watch|follow|stop|create|sit|stand|learn|pay|fall|reach|remain|suggest|raise|pass|sell|require|report|decide|pull)\b/gi,
+    msg: 'SVA error — "she" needs "-s" form (e.g. "she works", not "she work")', type: 'SVA' },
 
-  // Tense errors
-  { pattern: /\b(yesterday|last week|last year|last month|ago|in \d{4})\s+\w+\s+(am|is|are)\b/gi, msg: 'Tense error — past time marker with present tense verb', type: 'Tense' },
-  { pattern: /\b(yesterday|last week|last month|last year)\s+i\s+am\b/gi, msg: 'Tense error — use "I was" for past time', type: 'Tense' },
-  { pattern: /\bi\s+did\s+(went|came|saw|did|made|took|gave|got|brought|thought|knew|wanted|used|found|asked|felt|became|left|put|kept|let|began|showed|heard|moved|lived|believed|held|happened|included|set|turned|meant|changed|led|understood|watched|followed|stopped|sat|stood|learned|paid|fell|reached|suggested|raised|passed|sold|decided)\b/gi, msg: 'Tense error — double past tense, use "I went" not "I did went"', type: 'Tense' },
-  { pattern: /\bi\s+have\s+(went|came|saw|did|made|took|gave|got|brought|thought|knew|wanted|used|found|asked|felt|became|left|put|kept|let|began|showed|heard|moved|lived|believed|held|set|turned|meant|changed|led|understood|watched|followed|stopped|sat|stood|learned|paid|fell|reached|suggested|raised|passed|sold|decided)\b/gi, msg: 'Tense error — use past participle with "have" (e.g. "have gone" not "have went")', type: 'Tense' },
+  // SVA — I/We/You/They + -s form
+  { pattern: /\b(i|we|you|they)\s+(goes|comes|works|does|eats|drinks|runs|walks|plays|speaks|writes|reads|makes|takes|gives|gets|brings|thinks|knows|wants|needs|uses|finds|tries|asks|seems|feels|becomes|leaves|puts|keeps|lets|begins|shows|hears|moves|lives|believes|holds|happens|includes|continues|sets|turns|serves|means|changes|leads|understands|watches|follows|stops|creates|sits|stands|learns|pays|falls|reaches|remains|suggests|raises|passes|sells|requires|reports|decides|pulls)\b/gi,
+    msg: 'SVA error — plural subject should not use "-s" form verb', type: 'SVA' },
+
+  // Plural noun + is
+  { pattern: /\b(my skills|these things|those issues|the problems|the tickets|the users|the systems|the files|the reports)\s+is\b/gi,
+    msg: 'SVA error — plural noun needs "are" not "is"', type: 'SVA' },
+
+  // Past time marker + present tense
+  { pattern: /\b(yesterday|last week|last month|last year|ago)\b.{0,30}\b(am|is|are)\b/gi,
+    msg: 'Tense error — past time marker used with present tense verb', type: 'Tense' },
+
+  // Double past tense: did + past verb
+  { pattern: /\bi\s+did\s+(went|came|saw|made|took|gave|got|brought|thought|knew|wanted|found|felt|became|left|put|kept|let|began|showed|heard|moved|lived|believed|held|set|turned|meant|changed|led|understood|watched|followed|stopped|sat|stood|learned|paid|fell|reached|suggested|raised|passed|sold|decided)\b/gi,
+    msg: 'Tense error — double past, say "I went" not "I did went"', type: 'Tense' },
+
+  // have + simple past instead of past participle
+  { pattern: /\b(i|we|they|you|he|she)\s+have\s+(went|came|saw|did|made|took|gave|got|brought|thought|knew|wanted|found|felt|became|left|put|kept|let|began|showed|heard|moved|lived|believed|held|set|turned|meant|changed|led|understood|watched|followed|stopped|sat|stood|learned|paid|fell|reached|suggested|raised|passed|sold|decided)\b/gi,
+    msg: 'Tense error — use past participle with "have" (e.g. "have gone" not "have went")', type: 'Tense' },
+
+  // Stative verbs in continuous
+  { pattern: /\b(i am|he is|she is|they are|we are|you are)\s+(knowing|understanding|believing|wanting|needing|owning|belonging|preferring|hating|loving|liking|seeing|hearing|smelling|tasting)\b/gi,
+    msg: 'Tense error — stative verb should not be used in continuous form', type: 'Tense' },
 
   // Article errors
-  { pattern: /\b(i am|i'm)\s+(working in|studying in|employee in|student in|intern in)\s+(?!the\b|a\b|an\b)([a-z]+)/gi, msg: 'Article error — missing "a" or "the" before company/institution name context', type: 'Article' },
-  { pattern: /\b(joined|work in|working in|employed in)\s+(?!the\b|a\b|an\b)(company|organization|firm|bank|college|university|school|hospital)\b/gi, msg: 'Article error — missing "a" or "the" before noun', type: 'Article' },
+  { pattern: /\b(joined|work in|working in|employed in)\s+(?!the\b|a\b|an\b)(company|organization|firm|bank|college|university|school|hospital)\b/gi,
+    msg: 'Article error — missing "a" or "the" before noun', type: 'Article' },
 
-  // Wrong prepositions
-  { pattern: /\bgood\s+in\s+(communication|english|math|maths|mathematics|coding|programming|speaking|writing|reading|listening)\b/gi, msg: 'Preposition error — use "good at", not "good in"', type: 'Preposition' },
-  { pattern: /\bdiscuss\s+about\b/gi, msg: 'Preposition error — "discuss" does not need "about"', type: 'Preposition' },
-  { pattern: /\bmarried\s+with\b/gi, msg: 'Preposition error — use "married to", not "married with"', type: 'Preposition' },
-  { pattern: /\bexperienced\s+in\s+the\s+(service desk|support|field)\b/gi, msg: 'Preposition note — "experienced in" is correct here', type: 'Preposition' },
-  { pattern: /\binterested\s+on\b/gi, msg: 'Preposition error — use "interested in", not "interested on"', type: 'Preposition' },
-  { pattern: /\bdepend\s+on\s+the\s+(my|your|his|her|their)\b/gi, msg: 'Preposition error — do not use "the" after "depend on" before possessive', type: 'Preposition' },
-  { pattern: /\bsince\s+(\d+)\s+years\b/gi, msg: 'Preposition error — use "for X years", not "since X years"', type: 'Preposition' },
-  { pattern: /\bsince\s+(one|two|three|four|five|six|seven|eight|nine|ten)\s+years\b/gi, msg: 'Preposition error — use "for X years", not "since X years"', type: 'Preposition' },
+  // Preposition errors
+  { pattern: /\bgood\s+in\s+(communication|english|math|coding|programming|speaking|writing|reading|listening)\b/gi,
+    msg: 'Preposition error — use "good at", not "good in"', type: 'Preposition' },
+  { pattern: /\bdiscuss\s+about\b/gi,
+    msg: 'Preposition error — "discuss" does not need "about"', type: 'Preposition' },
+  { pattern: /\bmarried\s+with\b/gi,
+    msg: 'Preposition error — use "married to", not "married with"', type: 'Preposition' },
+  { pattern: /\binterested\s+on\b/gi,
+    msg: 'Preposition error — use "interested in", not "interested on"', type: 'Preposition' },
+  { pattern: /\bsince\s+(\d+|one|two|three|four|five|six|seven|eight|nine|ten)\s+years\b/gi,
+    msg: 'Preposition error — use "for X years", not "since X years"', type: 'Preposition' },
+  { pattern: /\bexplain\s+about\b/gi,
+    msg: 'Preposition error — use "explain" without "about"', type: 'Preposition' },
+  { pattern: /\bdepends\s+on\s+(my|your|his|her|their|the)\b/gi,
+    msg: 'Preposition note — check usage of "depends on"', type: 'Preposition' },
 
-  // Stative verbs
-  ...STATIVE_VERBS_CONTINUOUS,
-
-  // Double words
-  { pattern: /\b(\w+)\s+\1\b/gi, msg: 'Repeated word detected', type: 'Structure' },
-
-  // Wrong "is" with plural
-  { pattern: /\b(my skills|these things|those issues|the problems|the tickets|the users|the systems)\s+is\b/gi, msg: 'SVA error — plural noun requires "are", not "is"', type: 'SVA' },
+  // Double word
+  { pattern: /\b(\w{3,})\s+\1\b/gi,
+    msg: 'Structure — repeated word detected', type: 'Structure' },
 ];
 
 function checkGrammar(text) {
+  if (!text || text.trim().length === 0) return [];
   const errors = [];
   const seen = new Set();
 
   GRAMMAR_RULES.forEach(rule => {
-    const matches = text.match(rule.pattern);
-    if (matches) {
+    // Reset lastIndex for global regexes
+    rule.pattern.lastIndex = 0;
+    let match;
+    const regex = new RegExp(rule.pattern.source, rule.pattern.flags);
+    while ((match = regex.exec(text)) !== null) {
       const key = rule.msg;
       if (!seen.has(key)) {
         seen.add(key);
-        errors.push({ msg: rule.msg, type: rule.type, match: matches[0] });
+        errors.push({ msg: rule.msg, type: rule.type, match: match[0] });
       }
     }
   });
@@ -2035,72 +1121,71 @@ function checkGrammar(text) {
   // Filler words
   const lower = text.toLowerCase();
   const fillerFound = [];
+  let totalFillerCount = 0;
   FILLER_WORDS.forEach(fw => {
-    const regex = new RegExp('\\b' + fw + '\\b', 'gi');
-    const m = lower.match(regex);
-    if (m && m.length >= 2) fillerFound.push(fw + ' (×' + m.length + ')');
+    const rx = new RegExp('\\b' + fw.replace(/\s+/g, '\\s+') + '\\b', 'gi');
+    const m = lower.match(rx);
+    if (m && m.length >= 2) {
+      fillerFound.push('"' + fw + '" ×' + m.length);
+      totalFillerCount += m.length;
+    }
   });
   if (fillerFound.length > 0) {
     errors.push({ msg: 'Filler words detected: ' + fillerFound.join(', '), type: 'Filler', match: '' });
   }
 
-  // Too short
-  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
-  if (wordCount < 15 && wordCount > 0) {
-    errors.push({ msg: 'Answer is too brief — try to elaborate with at least 30 words', type: 'Structure', match: '' });
+  // Very short answer
+  const wc = text.trim().split(/\s+/).filter(Boolean).length;
+  if (wc > 0 && wc < 15) {
+    errors.push({ msg: 'Answer too brief — aim for at least 30 words for a strong response', type: 'Structure', match: '' });
   }
 
   return errors;
 }
 
 function countFillers(text) {
+  if (!text) return 0;
   let count = 0;
   const lower = text.toLowerCase();
   FILLER_WORDS.forEach(fw => {
-    const regex = new RegExp('\\b' + fw + '\\b', 'gi');
-    const m = lower.match(regex);
+    const rx = new RegExp('\\b' + fw.replace(/\s+/g, '\\s+') + '\\b', 'gi');
+    const m = lower.match(rx);
     if (m) count += m.length;
   });
   return count;
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  KEYWORD CHECK
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function checkKeywords(text, keywords) {
   const lower = text.toLowerCase();
-  return keywords.map(kw => ({
-    kw,
-    hit: lower.includes(kw.toLowerCase())
-  }));
+  return keywords.map(kw => ({ kw, hit: lower.includes(kw.toLowerCase()) }));
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  SCORING
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
-function calcSpeechScore(text, durationSecs) {
+function calcSpeechScore(text, secs) {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-  if (words < 5 || durationSecs < 2) return { score: 5, wpm: 0, label: 'Too short' };
-  const wpm = Math.round((words / durationSecs) * 60);
+  if (words < 5 || secs < 2) return { score: 5, wpm: 0, label: 'Too short' };
+  const wpm = Math.round((words / secs) * 60);
   let score;
   if (wpm >= 110 && wpm <= 150) score = 30;
-  else if (wpm >= 90 && wpm < 110) score = 24;
-  else if (wpm > 150 && wpm <= 170) score = 22;
-  else if (wpm >= 70 && wpm < 90) score = 16;
-  else if (wpm > 170) score = 14;
+  else if ((wpm >= 90 && wpm < 110) || (wpm > 150 && wpm <= 170)) score = 22;
+  else if (wpm >= 70 && wpm < 90) score = 15;
   else score = 8;
-  const label = wpm >= 110 && wpm <= 150 ? 'Good pace' : wpm < 90 ? 'Too slow' : 'Too fast';
+  const label = wpm >= 110 && wpm <= 150 ? 'Good pace ✓' : wpm < 90 ? 'Too slow' : 'Too fast';
   return { score, wpm, label };
 }
 
 function calcGrammarScore(errors) {
-  const base = 40;
-  const deductions = { SVA: 8, Tense: 8, Preposition: 6, Article: 5, Structure: 5, Filler: 4 };
-  let total = 0;
-  errors.forEach(e => { total += (deductions[e.type] || 5); });
-  return Math.max(0, base - total);
+  const deduct = { SVA: 8, Tense: 8, Preposition: 6, Article: 5, Structure: 4, Filler: 3 };
+  let used = 0;
+  errors.forEach(e => { used += (deduct[e.type] || 4); });
+  return Math.max(0, 40 - used);
 }
 
 function calcKeywordScore(kwResults) {
@@ -2108,74 +1193,164 @@ function calcKeywordScore(kwResults) {
   return Math.round((hits / kwResults.length) * 30);
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  EVALUATE
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function evaluateAnswer(text, duration) {
   const q = state.questions[state.currentIndex];
-  const errors = checkGrammar(text);
+  const errors    = checkGrammar(text);
   const kwResults = checkKeywords(text, q.kw);
-  const speech = calcSpeechScore(text, duration);
+  const speech    = calcSpeechScore(text, duration);
   const grammarScore = calcGrammarScore(errors);
-  const kwScore = calcKeywordScore(kwResults);
-  const total = speech.score + grammarScore + kwScore;
+  const kwScore   = calcKeywordScore(kwResults);
+  const total     = speech.score + grammarScore + kwScore;
   const fillerCount = countFillers(text);
 
-  const result = {
-    q: q.q,
-    transcript: text,
-    speech, grammarScore, kwScore, total,
-    errors, kwResults, fillerCount,
-    duration
-  };
-
+  const result = { q: q.q, transcript: text, speech, grammarScore, kwScore, total, errors, kwResults, fillerCount, duration };
   state.results.push(result);
   showScoreCard(result);
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
+//  HIGHLIGHTED TRANSCRIPT
+//  Wraps matched wrong phrases in <mark> spans
+// ═══════════════════════════════════════
+
+function buildHighlightedTranscript(text, errors) {
+  if (!text) return '<em style="color:var(--muted)">(No speech detected)</em>';
+
+  // Collect all match positions from errors that have a real match string
+  let ranges = [];
+  errors.forEach(e => {
+    if (!e.match || e.type === 'Filler' || e.type === 'Structure') return;
+    const rx = new RegExp(escapeRegex(e.match), 'gi');
+    let m;
+    while ((m = rx.exec(text)) !== null) {
+      ranges.push({ start: m.index, end: m.index + m[0].length, type: e.type });
+    }
+  });
+
+  if (ranges.length === 0) return escapeHtml(text);
+
+  // Sort by start, merge overlaps
+  ranges.sort((a, b) => a.start - b.start);
+  const merged = [];
+  ranges.forEach(r => {
+    if (merged.length && r.start < merged[merged.length-1].end) {
+      merged[merged.length-1].end = Math.max(merged[merged.length-1].end, r.end);
+    } else {
+      merged.push({...r});
+    }
+  });
+
+  // Build HTML
+  let html = '';
+  let cursor = 0;
+  merged.forEach(r => {
+    html += escapeHtml(text.slice(cursor, r.start));
+    const cls = (r.type === 'Filler' || r.type === 'Structure') ? 'warn-highlight' : 'err-highlight';
+    html += '<span class="' + cls + '" title="' + r.type + ' error">' + escapeHtml(text.slice(r.start, r.end)) + '</span>';
+    cursor = r.end;
+  });
+  html += escapeHtml(text.slice(cursor));
+  return html;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// ═══════════════════════════════════════
 //  SCORE CARD
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function showScoreCard(result) {
   const idx = state.currentIndex;
-  document.getElementById('score-q-label').textContent = `Question ${idx + 1} Score`;
 
+  // Progress on score screen
+  document.getElementById('score-q-label').textContent = 'Question ' + (idx + 1) + ' Score';
+  document.getElementById('score-progress-label').textContent = (idx + 1) + ' of 10';
+  document.getElementById('score-progress-fill').style.width = (((idx + 1) / 10) * 100) + '%';
+
+  // Total
   const totalEl = document.getElementById('score-total');
   totalEl.textContent = result.total;
   totalEl.className = 'score-big ' + scoreColor(result.total, 100);
 
+  // Speech
   const sc = document.getElementById('sc-speech');
   sc.textContent = result.speech.score;
   sc.className = 'sc-val ' + scoreColor(result.speech.score, 30);
   document.getElementById('sc-wpm').textContent = result.speech.wpm + ' WPM · ' + result.speech.label;
 
+  // Grammar
   const sg = document.getElementById('sc-grammar');
   sg.textContent = result.grammarScore;
   sg.className = 'sc-val ' + scoreColor(result.grammarScore, 40);
 
+  // Keywords
   const sk = document.getElementById('sc-keywords');
   sk.textContent = result.kwScore;
   sk.className = 'sc-val ' + scoreColor(result.kwScore, 30);
 
-  document.getElementById('score-transcript').textContent = result.transcript || '(No speech detected)';
+  // Highlighted transcript
+  const hasRealMatches = result.errors.some(e => e.match && e.type !== 'Filler' && e.type !== 'Structure');
+  const noteEl = document.getElementById('highlight-note');
+  if (hasRealMatches) {
+    noteEl.innerHTML = '<span style="color:var(--red)">■</span> Red highlights = grammar errors detected in your answer';
+  } else {
+    noteEl.textContent = '';
+  }
+  const transcriptEl = document.getElementById('score-transcript');
+  transcriptEl.innerHTML = buildHighlightedTranscript(result.transcript, result.errors);
 
-  // Errors
-  const errSec = document.getElementById('errors-section');
+  // Grammar errors list with wrong sentences
+  const errSec  = document.getElementById('errors-section');
   const errList = document.getElementById('error-list');
   errList.innerHTML = '';
-  if (result.errors.length > 0) {
-    errSec.style.display = 'block';
+
+  if (result.errors.length === 0) {
+    errSec.querySelector('.section-title') && null;
+    errList.innerHTML = '<div class="no-errors-msg">✅ No grammar errors detected — great job!</div>';
+  } else {
     result.errors.forEach(e => {
+      const isWarn = e.type === 'Filler' || e.type === 'Structure';
+      const tagClass = isWarn ? 'warn' : '';
+
+      // Find the wrong sentence containing the match
+      let wrongSentenceHtml = '';
+      if (e.match && result.transcript) {
+        const sentence = findSentenceContaining(result.transcript, e.match);
+        if (sentence) {
+          // Highlight the specific match inside the sentence
+          const highlighted = sentence.replace(
+            new RegExp(escapeRegex(e.match), 'gi'),
+            m => '<strong style="color:' + (isWarn ? 'var(--amber)' : 'var(--red)') + '">' + escapeHtml(m) + '</strong>'
+          );
+          wrongSentenceHtml = `
+            <div class="wrong-sentence-block ${isWarn ? 'warn' : ''}">
+              <div class="wrong-sentence-label">Wrong phrase detected:</div>
+              ${highlighted}
+            </div>`;
+        }
+      }
+
       const div = document.createElement('div');
       div.className = 'error-item';
-      const isWarn = e.type === 'Filler' || e.type === 'Structure';
-      div.innerHTML = `<span class="error-tag ${isWarn ? 'warn' : ''}">${e.type}</span><span>${e.msg}</span>`;
+      div.style.flexDirection = 'column';
+      div.innerHTML = `
+        <div style="display:flex;gap:10px;align-items:flex-start;width:100%">
+          <span class="error-tag ${tagClass}">${e.type}</span>
+          <span style="flex:1">${escapeHtml(e.msg)}</span>
+        </div>
+        ${wrongSentenceHtml}
+      `;
       errList.appendChild(div);
     });
-  } else {
-    errSec.style.display = 'none';
   }
 
   // Keywords
@@ -2188,15 +1363,41 @@ function showScoreCard(result) {
     kwEl.appendChild(span);
   });
 
-  // Next vs Finish
+  // Next button label
   const nextBtn = document.getElementById('next-btn');
   if (idx >= 9) {
-    nextBtn.textContent = 'View Final Report →';
+    nextBtn.textContent = '🏁 View Final Report';
+    nextBtn.style.background = 'linear-gradient(135deg, var(--accent2), #5b21b6)';
+    nextBtn.style.color = '#fff';
   } else {
-    nextBtn.textContent = 'Next Question →';
+    nextBtn.textContent = 'Next Question → (' + (idx + 2) + '/10)';
+    nextBtn.style.background = 'linear-gradient(135deg, var(--green), #059669)';
+    nextBtn.style.color = '#fff';
   }
 
   showScreen('screen-score');
+  // Scroll to top so user sees score immediately
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Find the sentence (or partial text) around a matched phrase
+function findSentenceContaining(text, match) {
+  if (!match || !text) return null;
+  const lowerText = text.toLowerCase();
+  const lowerMatch = match.toLowerCase();
+  const idx = lowerText.indexOf(lowerMatch);
+  if (idx === -1) return null;
+
+  // Get surrounding context — split by sentence endings
+  let start = idx;
+  let end = idx + match.length;
+
+  // Expand backwards to sentence start
+  while (start > 0 && !/[.!?]/.test(text[start - 1])) start--;
+  // Expand forwards to sentence end
+  while (end < text.length && !/[.!?]/.test(text[end])) end++;
+
+  return text.slice(start, end).trim();
 }
 
 function nextQuestion() {
@@ -2208,50 +1409,48 @@ function nextQuestion() {
   }
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  FINAL REPORT
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function showFinalReport() {
-  const results = state.results;
-  const avgTotal = Math.round(results.reduce((a, r) => a + r.total, 0) / results.length);
-  const avgSpeech = Math.round(results.reduce((a, r) => a + r.speech.score, 0) / results.length);
-  const avgGrammar = Math.round(results.reduce((a, r) => a + r.grammarScore, 0) / results.length);
-  const avgKw = Math.round(results.reduce((a, r) => a + r.kwScore, 0) / results.length);
+  const R = state.results;
+  const avgTotal   = Math.round(R.reduce((a, r) => a + r.total, 0) / R.length);
+  const avgSpeech  = Math.round(R.reduce((a, r) => a + r.speech.score, 0) / R.length);
+  const avgGrammar = Math.round(R.reduce((a, r) => a + r.grammarScore, 0) / R.length);
+  const avgKw      = Math.round(R.reduce((a, r) => a + r.kwScore, 0) / R.length);
 
   document.getElementById('report-name').textContent = state.name;
   document.getElementById('report-role').textContent = state.role === 'fresher' ? 'Fresher · Service Desk' : 'Experienced · Service Desk';
-
   document.getElementById('final-score-num').textContent = avgTotal;
   document.getElementById('final-ring').style.setProperty('--pct', avgTotal);
 
-  const colorClass = scoreColor(avgTotal, 100);
+  const c = scoreColor(avgTotal, 100);
   document.getElementById('final-score-num').style.color =
-    colorClass === 'green' ? 'var(--green)' : colorClass === 'amber' ? 'var(--amber)' : 'var(--red)';
+    c === 'green' ? 'var(--green)' : c === 'amber' ? 'var(--amber)' : 'var(--red)';
 
-  setAvgCell('avg-speech', avgSpeech, 30);
+  setAvgCell('avg-speech',  avgSpeech,  30);
   setAvgCell('avg-grammar', avgGrammar, 40);
-  setAvgCell('avg-keywords', avgKw, 30);
+  setAvgCell('avg-keywords', avgKw,     30);
 
-  // Areas of Improvement
-  buildImprovements(results, avgTotal, avgSpeech, avgGrammar, avgKw);
+  buildImprovements(R, avgTotal, avgSpeech, avgGrammar, avgKw);
 
-  // Q-wise breakdown
   const qList = document.getElementById('q-summary-list');
   qList.innerHTML = '';
-  results.forEach((r, i) => {
+  R.forEach((r, i) => {
+    const sc = scoreColor(r.total, 100);
     const row = document.createElement('div');
     row.className = 'q-summary-row';
-    const sc = scoreColor(r.total, 100);
     row.innerHTML = `
-      <div class="q-num-badge">${i + 1}</div>
-      <div class="q-sum-text">${r.q.substring(0, 50)}${r.q.length > 50 ? '...' : ''}</div>
+      <div class="q-num-badge">${i+1}</div>
+      <div class="q-sum-text">${escapeHtml(r.q.substring(0,52))}${r.q.length > 52 ? '…' : ''}</div>
       <div class="q-sum-score ${sc}">${r.total}</div>
     `;
     qList.appendChild(row);
   });
 
   showScreen('screen-report');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function buildImprovements(results, avgTotal, avgSpeech, avgGrammar, avgKw) {
@@ -2259,51 +1458,47 @@ function buildImprovements(results, avgTotal, avgSpeech, avgGrammar, avgKw) {
   list.innerHTML = '';
   const improvements = [];
 
-  // Count error types
   const errorTypes = {};
   let totalFillers = 0;
   results.forEach(r => {
-    r.errors.forEach(e => {
-      errorTypes[e.type] = (errorTypes[e.type] || 0) + 1;
-    });
+    r.errors.forEach(e => { errorTypes[e.type] = (errorTypes[e.type] || 0) + 1; });
     totalFillers += r.fillerCount;
   });
-
   const avgFillers = totalFillers / results.length;
+  const avgWPM = Math.round(results.reduce((a, r) => a + r.speech.wpm, 0) / results.length);
 
   if (avgTotal >= 75) {
     improvements.push({ icon: '🏆', text: 'Strong overall performance. You demonstrate confident communication and good domain awareness. Continue practising to maintain consistency under pressure.' });
   }
 
-  if (avgGrammar < 20) {
-    improvements.push({ icon: '📝', text: 'Your grammar needs focused attention. Practice forming complete, well-structured sentences before responding. Reading English articles daily will help significantly.' });
+  if (avgGrammar < 16) {
+    improvements.push({ icon: '📝', text: 'Your grammar needs focused attention. Practise forming complete, well-structured sentences before responding. Reading English articles and speaking daily will help significantly.' });
   } else if (errorTypes['SVA'] >= 3) {
-    improvements.push({ icon: '⚠️', text: 'Subject-Verb Agreement (SVA) requires improvement. Remember: He/She/It always takes a verb ending in "-s" (e.g., "He works", not "He work").' });
+    improvements.push({ icon: '⚠️', text: 'Subject-Verb Agreement (SVA) needs improvement. Remember: He / She / It always takes a verb ending in "-s". For example, say "He works" not "He work".' });
   } else if (errorTypes['Tense'] >= 3) {
-    improvements.push({ icon: '⏳', text: 'Tense consistency needs work. Decide upfront whether your answer is in past, present, or future tense — and stay consistent throughout your response.' });
+    improvements.push({ icon: '⏳', text: 'Tense consistency needs work. Before answering, decide whether your response is in the past, present, or future — then stick to it throughout.' });
   } else if (errorTypes['Preposition'] >= 2) {
-    improvements.push({ icon: '🔤', text: 'Preposition usage needs attention. Common corrections: "good at" (not "good in"), "for X years" (not "since X years"), "interested in" (not "interested on").' });
+    improvements.push({ icon: '🔤', text: 'Preposition usage needs attention. Key corrections: "good at" not "good in", "for X years" not "since X years", "interested in" not "interested on", "explain" not "explain about".' });
   } else if (avgGrammar < 30) {
-    improvements.push({ icon: '📖', text: 'Work on basic grammar fundamentals — article usage, prepositions, and sentence structure. Practise speaking in full sentences daily.' });
+    improvements.push({ icon: '📖', text: 'Work on grammar fundamentals — articles, prepositions, and sentence structure. Practise speaking in complete sentences every day.' });
   }
 
   if (avgKw < 12) {
-    improvements.push({ icon: '🔑', text: 'Your answers lack domain-specific keywords expected in service desk interviews. Study key terms such as SLA, FCR, ITIL, incident management, escalation, and CSAT — and use them naturally in your answers.' });
+    improvements.push({ icon: '🔑', text: 'Your answers lack domain-specific keywords. Study terms like SLA, FCR, ITIL, incident management, escalation, CSAT, and RCA — and use them naturally in your responses.' });
   }
 
   if (avgFillers >= 3) {
-    improvements.push({ icon: '🤐', text: 'Reduce filler words such as "um", "uh", "basically", and "you know". Instead of filling silence with these words, pause briefly and collect your thoughts before continuing.' });
+    improvements.push({ icon: '🤐', text: 'Reduce filler words such as "um", "uh", "basically", and "you know". Instead of filling silence, pause silently, collect your thoughts, then continue.' });
   }
 
-  const avgWPM = Math.round(results.reduce((a, r) => a + r.speech.wpm, 0) / results.length);
   if (avgWPM < 90 && avgWPM > 0) {
-    improvements.push({ icon: '🗣️', text: 'Your speaking pace is too slow. Aim for 110 to 150 words per minute. Practice answering questions aloud daily with a timer to build confidence and fluency.' });
+    improvements.push({ icon: '🗣️', text: 'Your speaking pace is slow. Aim for 110–150 words per minute. Practise answering questions aloud with a timer to build confidence and fluency.' });
   } else if (avgWPM > 165) {
-    improvements.push({ icon: '🐢', text: 'You are speaking too fast. Slow down slightly for better clarity and listener comprehension. Deliberate pacing signals confidence, not nervousness.' });
+    improvements.push({ icon: '🐢', text: 'You are speaking too fast. Slow down slightly — deliberate, clear pacing signals confidence and improves listener comprehension.' });
   }
 
   if (improvements.length === 0) {
-    improvements.push({ icon: '✅', text: 'You performed well across all parameters. Keep practising to maintain your strengths and continue building domain knowledge.' });
+    improvements.push({ icon: '✅', text: 'Excellent performance across all parameters. Keep practising to stay consistent and continue building domain knowledge.' });
   }
 
   improvements.forEach(item => {
@@ -2314,14 +1509,13 @@ function buildImprovements(results, avgTotal, avgSpeech, avgGrammar, avgKw) {
   });
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 //  UTILITIES
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════════
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
 }
 
 function scoreColor(score, max) {
@@ -2351,13 +1545,14 @@ function restartApp() {
     name: '', role: '', questions: [], currentIndex: 0,
     results: [], transcript: '', isRecording: false,
     startTime: null, recognition: null,
-    autoStopTimer: null, countdownTimer: null, countdownVal: 20
+    autoStopTimer: null, countdownVal: 20
   };
   document.getElementById('name-input').value = '';
   document.getElementById('role-fresher').classList.remove('selected');
   document.getElementById('role-experienced').classList.remove('selected');
   document.getElementById('start-btn').disabled = true;
   showScreen('screen-welcome');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
